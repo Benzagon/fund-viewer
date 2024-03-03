@@ -13,8 +13,25 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Movie {
-  id Int @id @default(autoincrement())
-  title String
-  year String
+model Fund {
+  id        Int     @id @default(autoincrement())
+  name      String
+  users     User[]
+  reports   Report[]
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String
+  hash      String
+  fund      Fund @relation(fields: [fundId], references: [id])
+  fundId    Int
+}
+
+model Report {
+  id           Int        @id @default(autoincrement())
+  path         String
+  createdAt    DateTime   @default(now())
+  fund         Fund @relation(fields: [fundId], references: [id])
+  fundId       Int
 }
