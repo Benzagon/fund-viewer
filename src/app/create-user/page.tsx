@@ -17,6 +17,8 @@ import { useForm } from "react-hook-form";
 const formSchema = z.object({
   email: z.string().email().min(1),
   password: z.string().min(1),
+  name: z.string().min(1),
+  tokens: z.string().min(1),
   fundId: z.string().min(1)
 })
 
@@ -27,6 +29,8 @@ export default function Home() {
       defaultValues: {
         email: "",
         password: "",
+        name: "",
+        tokens: "",
         fundId: ""
       },
     })
@@ -35,15 +39,17 @@ export default function Home() {
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
       // Do something with the form values.
       // ✅ This will be type-safe and validated.
-      const { email, password, fundId } = values;
+      const { email, tokens, name, password, fundId } = values;
       const numberId = Number(fundId);
+      const numberTokens = Number(tokens);
+      const user: User = {email, tokens: numberTokens, name, fundId: numberId};
       try {
         fetch('/api/add-user', {
           method: 'POST', 
           headers: {
           'Content-Type': 'application/json'
           },
-          body: JSON.stringify({email, password, numberId})
+          body: JSON.stringify({user, password})
         });
       } catch (error){
         console.error(error);
@@ -78,6 +84,32 @@ export default function Home() {
                   <FormLabel>Password</FormLabel>
                   <FormControl>
                     <Input type="text" placeholder="Enter user password..." {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Name</FormLabel>
+                  <FormControl>
+                    <Input type="text" placeholder="Enter user name..." {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="tokens"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Tokens</FormLabel>
+                  <FormControl>
+                    <Input type="text" placeholder="Enter user tokens..." {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
