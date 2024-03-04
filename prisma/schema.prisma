@@ -21,17 +21,17 @@ model Fund {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  email     String
+  id        String       @id @default(cuid())
+  email     String       @unique
   hash      String
-  fund      Fund @relation(fields: [fundId], references: [id])
+  fund      Fund         @relation(fields: [fundId], references: [id])
   fundId    Int
 }
 
 model Report {
-  id           Int        @id @default(autoincrement())
+  id           String        @id @default(cuid())
   path         String
   createdAt    DateTime   @default(now())
-  fund         Fund @relation(fields: [fundId], references: [id])
+  fund         Fund       @relation(fields: [fundId], references: [id])
   fundId       Int
 }

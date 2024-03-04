@@ -4,7 +4,6 @@ import { Button } from '../../components/ui/button';
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -16,8 +15,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
  
 const formSchema = z.object({
-  name: z.string().min(1),
-  year: z.string().min(1)
+  email: z.string().email().min(1),
+  password: z.string().min(1),
+  fundId: z.string().min(1)
 })
 
 export default function Home() {
@@ -25,8 +25,9 @@ export default function Home() {
     const form = useForm<z.infer<typeof formSchema>>({
       resolver: zodResolver(formSchema),
       defaultValues: {
-        name: "",
-        year: ""
+        email: "",
+        password: "",
+        fundId: ""
       },
     })
    
@@ -34,14 +35,15 @@ export default function Home() {
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
       // Do something with the form values.
       // ✅ This will be type-safe and validated.
-      const { name, year } = values;
+      const { email, password, fundId } = values;
+      const numberId = Number(fundId);
       try {
-        fetch('/api/add-movie', {
+        fetch('/api/add-user', {
           method: 'POST', 
           headers: {
           'Content-Type': 'application/json'
           },
-          body: JSON.stringify({name, year})
+          body: JSON.stringify({email, password, numberId})
         });
       } catch (error){
         console.error(error);
@@ -54,15 +56,15 @@ export default function Home() {
       <div className="w-screen h-screen flex items-center justify-center bg-slate-100">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 bg-[#FEFEFE] py-8 px-8 w-80 rounded grid drop-shadow-sm">
-            <h2 className="text-xl font-semibold text-center">Create movie</h2>
+            <h2 className="text-xl font-semibold text-center">Create user</h2>
             <FormField
               control={form.control}
-              name="name"
+              name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter movie name..." {...field} />
+                    <Input placeholder="Enter user email..." {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -70,12 +72,25 @@ export default function Home() {
             />
             <FormField
               control={form.control}
-              name="year"
+              name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Year</FormLabel>
+                  <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input type="text" placeholder="Enter movie year..." {...field} />
+                    <Input type="text" placeholder="Enter user password..." {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="fundId"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Fund</FormLabel>
+                  <FormControl>
+                    <Input type="text" placeholder="Enter fund Id..." {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

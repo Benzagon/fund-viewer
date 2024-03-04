@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createMovie } from "./handler";
+import { createUser } from "./handler";
 
 export async function POST(req: NextRequest) {
     const data = await req.json();
-    const{ name, year } = data;
+    const{ email, password, numberId } = data;
 
-    const result = await createMovie(name, year);
+    const result = await createUser(email, password, numberId);
     console.log(result)
     return NextResponse.json({data: result});
 }
