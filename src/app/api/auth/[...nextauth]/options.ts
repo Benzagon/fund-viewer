@@ -53,7 +53,7 @@ export const authOptions: NextAuthOptions = {
                     id: user.id,
                     email: user.email,
                     name: user.name,
-                    tokens: user.tokens,
+                    // tokens: user.tokens,
                     fundId: user.fundId
                 };
             }
