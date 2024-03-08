@@ -14,20 +14,27 @@ datasource db {
 }
 
 model Fund {
-  id        Int     @id @default(autoincrement())
-  name      String
-  users     User[]
-  reports   Report[]
+  id                  Int     @id @default(autoincrement())
+  name                String
+  tokenValInception   Float
+  btcPriceInception   Float
+  inceptionDate       DateTime
+  daysRunning         Int
+  users               User[]
+  reports             Report[]
 }
 
 model User {
-  id        String       @id @default(cuid())
-  email     String       @unique
-  hash      String
-  name      String
-  tokens    Float
-  fund      Fund         @relation(fields: [fundId], references: [id])
-  fundId    Int
+  id              String       @id @default(cuid())
+  email           String       @unique
+  hash            String
+  name            String
+  usdInvested     Float
+  tokens          Float
+  tokenValEntrt   Float
+  btcPriceEntry   Float
+  fund            Fund         @relation(fields: [fundId], references: [id])
+  fundId          Int
 }
 
 model Report {

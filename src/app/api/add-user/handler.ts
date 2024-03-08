@@ -12,6 +12,9 @@ export async function createUser( user: User , password: string,) {
                     hash: hashedPassword,
                     name: user.name,
                     tokens: user.tokens,
+                    usdInvested: user.usdInvested,
+                    btcPriceEntry: user.btcPriceEntry,
+                    tokenValEntrt: user.tokenValEntry,
                     fund: {
                         connect: {
                             id: user.fundId
