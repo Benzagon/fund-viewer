@@ -4,6 +4,8 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/options";
 import Signout from "@/components/Signout";
 import CryptoPrice from "@/components/CyptoPrice";
+import ValueChart from "@/components/graphs/ValueChart";
+import PieChart from "@/components/graphs/PieChart";
 
 async function getTokens(email: string) { //Change to id
   const result = await prisma.user.findUnique({
@@ -22,6 +24,8 @@ export default async function Home() {
       <h1 className="text-xl font-semibold mb-2">{`Hi, there ${session?.user?.name}`}</h1>
       <h2 className="text-lg font-medium mb-2">{`You have: ${tokens} tokens`}</h2>
       <CryptoPrice></CryptoPrice>
+      <ValueChart></ValueChart>
+      <PieChart></PieChart>
       <Signout></Signout>
     </div>
   );
