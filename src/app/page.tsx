@@ -7,6 +7,7 @@ import CryptoPrice from "@/components/CyptoPrice";
 import ValueChart from "@/components/graphs/ValueChart";
 import PieChart from "@/components/graphs/PieChart";
 import Navbar from "@/components/dashboard/Navbar";
+import UserGrid from "@/components/dashboard/grids/UserGrid";
 
 async function getTokens(email: string) { //Change to id
   const result = await prisma.user.findUnique({
@@ -23,14 +24,23 @@ export default async function Home() {
   return (
     <>
       <Navbar fundName={'KB Capital'} email={session?.user?.email || 'null'} name={session?.user?.name || 'null'}></Navbar>
-      <div className="w-screen flex flex-col items-center justify-center gap-4">
-        <h1 className="text-xl font-semibold mb-2">{`Hi, there ${session?.user?.name}`}</h1>
-        <h2 className="text-lg font-medium mb-2">{`You have: ${tokens} tokens`}</h2>
-        <CryptoPrice></CryptoPrice>
-        <ValueChart></ValueChart>
-        <PieChart></PieChart>
-        <Signout></Signout>
-    </div>
+      <div className="w-screen pt-32 grid gap-10 px-20">
+        <div className="flex flex-col gap-0">
+          <h1 className="font-medium text-h1">Dashboard</h1>
+          <h3 className="font-normal text-xl text-fund-text-gray">View the overall fund performance</h3>
+        </div>
+        <div className="flex justify-between items-start">
+          <UserGrid></UserGrid>
+        </div>
+        {/* <div className="flex flex-col items-center justify-center pt-36">
+          <h1 className="text-xl font-semibold mb-2">{`Hi, there ${session?.user?.name}`}</h1>
+          <h2 className="text-lg font-medium mb-2">{`You have: ${tokens} tokens`}</h2>
+          <CryptoPrice></CryptoPrice>
+          <ValueChart></ValueChart>
+          <PieChart></PieChart>
+          <Signout></Signout>
+        </div> */}
+      </div>
     </>
   );
 }

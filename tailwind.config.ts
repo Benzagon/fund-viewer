@@ -38,7 +38,9 @@ const config = {
       colors: {
         fund: {
           text: {
-            gray: '#5D5D5D'
+            gray: '#5D5D5D',
+            green: '#5CCE5D',
+            red: '#D15B5B',
           },
           bg: {
             default: '#FCFCFC'
