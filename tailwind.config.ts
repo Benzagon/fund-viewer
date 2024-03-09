@@ -32,6 +32,9 @@ const config = {
       'h1': '2rem'
     },
     extend: {
+      fontFamily: {
+        'poppins': ["var(--font-poppins)"]
+      },
       colors: {
         fund: {
           text: {
