@@ -22,6 +22,15 @@ model Fund {
   daysRunning         Int
   users               User[]
   reports             Report[]
+  nav                 Nav[]
+}
+
+model Nav {
+  id      String       @id @default(cuid())
+  name    String
+  value   Float
+  fund    Fund       @relation(fields: [fundId], references: [id])
+  fundId  Int
 }
 
 model User {
@@ -31,7 +40,7 @@ model User {
   name            String
   usdInvested     Float
   tokens          Float
-  tokenValEntrt   Float
+  tokenValEntry   Float
   btcPriceEntry   Float
   fund            Fund         @relation(fields: [fundId], references: [id])
   fundId          Int
