@@ -22,8 +22,25 @@ const config = {
         "2xl": "1400px",
       },
     },
+    fontSize: {
+      sm: '0.75rem',
+      base: '1rem',
+      xl: '1.25rem',
+      '2xl': '1.563rem',
+      '3xl': '1.953rem',
+      '4xl': '2.441rem',
+      'h1': '2rem'
+    },
     extend: {
       colors: {
+        fund: {
+          text: {
+            gray: '#5D5D5D'
+          },
+          bg: {
+            default: '#FCFCFC'
+          }
+        },
         tremor: {
           brand: {
             faint: colors.blue[50],

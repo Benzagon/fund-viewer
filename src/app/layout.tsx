@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="overflow-x-hidden">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} bg-fund-bg-default`}>{children}</body>
     </html>
   );
 }
