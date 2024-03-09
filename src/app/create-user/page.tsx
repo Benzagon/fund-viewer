@@ -20,7 +20,7 @@ const formSchema = z.object({
   name: z.string().min(1),
   usdInvested: z.string().min(1),
   tokens: z.string().min(1),
-  tokenValEntrt: z.string().min(1),
+  tokenValEntry: z.string().min(1),
   btcPriceEntry: z.string().min(1),
   fundId: z.string().min(1)
 })
@@ -35,7 +35,7 @@ export default function Home() {
         name: "",
         usdInvested: "",
         tokens: "",
-        tokenValEntrt: "",
+        tokenValEntry: "",
         btcPriceEntry: "",
         fundId: ""
       },
@@ -45,10 +45,10 @@ export default function Home() {
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
       // Do something with the form values.
       // ✅ This will be type-safe and validated.
-      const { email, tokens, tokenValEntrt, btcPriceEntry, usdInvested, name, password, fundId } = values;
+      const { email, tokens, tokenValEntry, btcPriceEntry, usdInvested, name, password, fundId } = values;
       const numberId = Number(fundId);
       const numberTokens = Number(tokens);
-      const numberTknVal = Number(tokenValEntrt);
+      const numberTknVal = Number(tokenValEntry);
       const numberUsd = Number(usdInvested);
       const numberBtc = Number(btcPriceEntry);
       const user: User = {email, tokens: numberTokens, name, fundId: numberId, tokenValEntry: numberTknVal, usdInvested: numberUsd, btcPriceEntry: numberBtc};
@@ -152,7 +152,7 @@ export default function Home() {
             />
             <FormField
               control={form.control}
-              name="tokenValEntrt"
+              name="tokenValEntry"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Token Val @ Entry</FormLabel>

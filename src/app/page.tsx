@@ -20,10 +20,11 @@ async function getTokens(email: string) { //Change to id
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
+  const email = session?.user?.email;
   const tokens = await getTokens(session?.user?.email || '');
   return (
     <>
-      <Navbar fundName={'KB Capital'} email={session?.user?.email || 'null'} name={session?.user?.name || 'null'}></Navbar>
+      <Navbar fundName={'KB Capital'} email={email || 'Undefined'} name={session?.user?.name || 'Undefined'}></Navbar>
       <div className="w-screen pt-32 grid gap-10 px-20">
         <div className="flex flex-col gap-0">
           <h1 className="font-medium text-h1">Dashboard</h1>

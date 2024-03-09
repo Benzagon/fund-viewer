@@ -14,7 +14,7 @@ export async function createUser( user: User , password: string,) {
                     tokens: user.tokens,
                     usdInvested: user.usdInvested,
                     btcPriceEntry: user.btcPriceEntry,
-                    tokenValEntrt: user.tokenValEntry,
+                    tokenValEntry: user.tokenValEntry,
                     fund: {
                         connect: {
                             id: user.fundId

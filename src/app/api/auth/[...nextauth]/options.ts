@@ -53,12 +53,34 @@ export const authOptions: NextAuthOptions = {
                     id: user.id,
                     email: user.email,
                     name: user.name,
-                    // tokens: user.tokens,
+                    tokens: user.tokens,
                     fundId: user.fundId
                 };
             }
         })
     ],
+    callbacks: {
+        async jwt({token, user, session}) {
+            if(user){
+                return {
+                    ...token,
+                    id: user.id,
+                    fundId: (user as User).fundId
+                }
+            }
+            return token
+        },
+        async session({session, token, user}){
+            return {
+                ...session,
+                user: {
+                    ...session.user,
+                    id: token.id,
+                    fundId: token.fundId
+                }
+            };
+        }
+    },
     pages: {
         signIn: "/login"
     }
