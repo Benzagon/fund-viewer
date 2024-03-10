@@ -10,6 +10,7 @@ export async function getUserTokenData(id: string) {
                 usdInvested: true,
                 tokens: true,
                 tokenValEntry: true,
+                btcPriceEntry: true,
             }
         })
     } catch(e: unknown) {

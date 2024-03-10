@@ -3,7 +3,6 @@ import prisma from "@/lib/prisma";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/options";
 import Signout from "@/components/Signout";
-import CryptoPrice from "@/components/CyptoPrice";
 import ValueChart from "@/components/graphs/ValueChart";
 import PieChart from "@/components/graphs/PieChart";
 import Navbar from "@/components/dashboard/Navbar";
