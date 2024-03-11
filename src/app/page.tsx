@@ -7,6 +7,7 @@ import ValueChart from "@/components/graphs/ValueChart";
 import PieChart from "@/components/graphs/PieChart";
 import Navbar from "@/components/dashboard/Navbar";
 import UserGrid from "@/components/dashboard/grids/UserGrid";
+import AssetGrid from "@/components/dashboard/grids/AssetGrid";
 
 async function getTokens(email: string) { //Change to id
   const result = await prisma.user.findUnique({
@@ -29,8 +30,9 @@ export default async function Home() {
           <h1 className="font-medium text-h1">Dashboard</h1>
           <h3 className="font-normal text-xl text-fund-text-gray">View the overall fund performance</h3>
         </div>
-        <div className="flex justify-between items-start">
+        <div className="flex flex-wrap gap-8 justify-between items-start">
           <UserGrid></UserGrid>
+          <AssetGrid></AssetGrid>
         </div>
         {/* <div className="flex flex-col items-center justify-center pt-36">
           <h1 className="text-xl font-semibold mb-2">{`Hi, there ${session?.user?.name}`}</h1>

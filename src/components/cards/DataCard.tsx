@@ -23,7 +23,7 @@ const DataCard = ({name, value, porcent}: Props) => {
 
 const LargeDataCard = ({name, value, porcent}: Props) => {
     return (
-        <div className="w-80 h-44 py-[1.625rem] px-[22px] bg-white rounded-[10px] flex flex-col justify-between drop-shadow-md">
+        <div className="w-72 h-full py-[1.625rem] px-[22px] bg-white rounded-[10px] flex flex-col justify-between drop-shadow-md">
             <div className="flex gap-3 items-center">
                 <h3 className="font-normal text-base text-fund-text-gray">{name}</h3>
                 <span className="material-symbols-outlined text-[#5D5D5D]/40">info</span>
