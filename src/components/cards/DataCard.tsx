@@ -14,7 +14,7 @@ const DataCard = ({name, value, porcent}: Props) => {
                 <span className="material-symbols-outlined text-[#5D5D5D]/40">info</span>
             </div>
             <div className="flex gap-3 items-center">
-                <h2 className="font-medium text-h1">{`$` + value.toLocaleString()}</h2>
+                <h2 className="font-medium text-h1">{`$` + Number(value.toFixed(2)).toLocaleString()}</h2>
                 <PorcentagePill value={porcent}></PorcentagePill>
             </div>
         </div>
@@ -28,7 +28,7 @@ const LargeDataCard = ({name, value, porcent}: Props) => {
                 <h3 className="font-normal text-base text-fund-text-gray">{name}</h3>
                 <span className="material-symbols-outlined text-[#5D5D5D]/40">info</span>
             </div>
-            <h2 className="font-medium text-h1">{`$` + value.toLocaleString()}</h2>
+            <h2 className="font-medium text-h1">{`$` + Number(value.toFixed(2)).toLocaleString()}</h2>
             <PorcentagePillNobg value={porcent}></PorcentagePillNobg>
         </div>
     );

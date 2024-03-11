@@ -16,14 +16,19 @@ const AssetGrid = async () => {
     const tokenData = await fetchTokenData(id || '');
     const { tokens, usdInvested, tokenValEntry, btcPriceEntry } = tokenData.data;
 
-    const tokenValue: { value: number } = await fetchTokenValue(fundId || '');
-    const currentAmmount = tokens * tokenValue.value;
-    // const PNL = currentAmmount - usdInvested;
-    const PNLprcnt = tokenValue.value / tokenValEntry
+    let tokenValue: { value: number } = {value: 0};
+    const prices = await fetchBtc().then(async (prices) => {
+        tokenValue = await fetchTokenValue(fundId || '', prices.btcPrice, prices.ethPrice);
+        return prices;
+    });
 
-    const prices = await fetchBtc();
-    const alphaBtcPrcnt = Number((PNLprcnt - percentage(prices.btcPrice, btcPriceEntry)).toFixed(2));
-    const alphaBtc = usdInvested + usdInvested * (Math.abs(alphaBtcPrcnt) / 100);
+    // const currentAmmount = tokens * tokenValue.value;
+    // const PNL = currentAmmount - usdInvested;
+    const PNLprcnt = percentage(tokenValue.value, tokenValEntry);
+    const btcVar = percentage(prices.btcPrice, btcPriceEntry);
+
+    const alphaBtcPrcnt = Number((PNLprcnt - btcVar).toFixed(2));
+    const alphaBtc = usdInvested + usdInvested * (Math.abs(btcVar) / 100);
 
     return (
        <div className="grid gap-7">

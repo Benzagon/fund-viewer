@@ -3,6 +3,7 @@ import { DataCard } from "@/components/cards/DataCard";
 import { getServerSession } from "next-auth";
 import { percentage } from "@/lib/utils";
 import { fetchTokenData, fetchTokenValue } from "@/lib/fetchData";
+import { fetchBtc } from "@/lib/fetchBtc";
 
 
 const UserGrid = async () => {
@@ -11,14 +12,18 @@ const UserGrid = async () => {
     const id = session?.user?.id;
     //@ts-ignore
     const fundId = session?.user.fundId;
+    let tokenValue: { value: number } = {value: 0};
 
+    await fetchBtc().then(async (prices) => {
+        tokenValue = await fetchTokenValue(fundId || '', prices.btcPrice, prices.ethPrice);
+    });
+    
     const tokenData = await fetchTokenData(id || '');
-    const tokenValue: { value: number } = await fetchTokenValue(fundId || '');
     const { tokens, usdInvested, tokenValEntry } = tokenData.data;
 
     const currentAmmount = tokens * tokenValue.value;
     const PNL = currentAmmount - usdInvested;
-    const PNLprcnt = tokenValue.value / tokenValEntry
+    const PNLprcnt = percentage(tokenValue.value, tokenValEntry);
 
     return (
         <div className="grid gap-7">
