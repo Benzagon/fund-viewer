@@ -31,7 +31,7 @@ export default function Login() {
    
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
       const { email, password } = values;
-      signIn("credentials", { email: email, password: password , callbackUrl: process.env.HOST})
+      signIn("credentials", { email: email, password: password , callbackUrl: process.env.NEXT_PUBLIC_BASE_URL})
       //Display error if incorrect
      }
 
