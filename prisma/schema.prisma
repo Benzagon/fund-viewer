@@ -29,6 +29,7 @@ model Nav {
   id      String       @id @default(cuid())
   name    String
   value   Float
+  coin    String
   fund    Fund       @relation(fields: [fundId], references: [id])
   fundId  Int
 }
