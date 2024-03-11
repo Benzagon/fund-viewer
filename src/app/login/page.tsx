@@ -14,7 +14,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { signIn } from "next-auth/react";
-import { useSearchParams, useRouter } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
  
 const formSchema = z.object({
   email: z.string().email().min(1),
@@ -22,9 +23,7 @@ const formSchema = z.object({
 })
 
 export default function Login() {
-    const router = useRouter()
     const searchParams = useSearchParams();
-    // 1. Define your form.
     const form = useForm<z.infer<typeof formSchema>>({
       resolver: zodResolver(formSchema),
       defaultValues: {
@@ -33,11 +32,7 @@ export default function Login() {
       },
     })
    
-    // 2. Define a submit handler.
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
-      // Do something with the form values.
-      // ✅ This will be type-safe and validated.
-      
       const { email, password } = values;
       signIn("credentials", { email: email, password: password , callbackUrl: `${searchParams?.get('callbackUrl') || 'http://localhost:3000/'}`})
       //Display error if incorrect
