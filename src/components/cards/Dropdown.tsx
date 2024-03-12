@@ -5,7 +5,7 @@ import { signOut } from "next-auth/react";
 const Dropdown = ({name, email}: {name: string, email: string}) => {
     return (
         <DropdownMenu>
-            <DropdownMenuTrigger>
+            <DropdownMenuTrigger asChild className="focus:outline-0">
                 <div className="flex gap-4 items-center cursor-pointer">
                     <div className="flex flex-col items-start gap-1">
                         <h2 className="3xl:text-xl text-base font-medium">{name}</h2>
@@ -14,7 +14,7 @@ const Dropdown = ({name, email}: {name: string, email: string}) => {
                     <span className="material-symbols-outlined">expand_more</span>
                 </div>
             </DropdownMenuTrigger>
-            <DropdownMenuContent>
+            <DropdownMenuContent className="w-40">
                 <DropdownMenuLabel className="cursor-default">My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={() => signOut()} className="cursor-pointer">{`Signout`}</DropdownMenuItem>
