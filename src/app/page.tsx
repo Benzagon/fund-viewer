@@ -29,16 +29,11 @@ export default async function Home() {
           <h1 className="font-medium 3xl:text-h1 text-2xl">Dashboard</h1>
           <h3 className="font-normal 3xl:text-xl text-base text-fund-text-gray">View the overall fund performance</h3>
         </div>
-        <div className="flex flex-wrap gap-8 justify-between items-start">
+        <div className="flex flex-wrap gap-2 justify-between items-start">
           <UserGrid></UserGrid>
           <AssetGrid></AssetGrid>
         </div>
         {/* <div className="flex flex-col items-center justify-center pt-36">
-          <h1 className="text-xl font-semibold mb-2">{`Hi, there ${session?.user?.name}`}</h1>
-          <h2 className="text-lg font-medium mb-2">{`You have: ${tokens} tokens`}</h2>
-          <CryptoPrice></CryptoPrice>
-          <ValueChart></ValueChart>
-          <PieChart></PieChart>
           <Signout></Signout>
         </div> */}
       </div>

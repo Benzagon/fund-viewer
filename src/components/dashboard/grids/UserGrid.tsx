@@ -4,6 +4,8 @@ import { getServerSession } from "next-auth";
 import { percentage } from "@/lib/utils";
 import { fetchTokenData, fetchTokenValue } from "@/lib/fetchData";
 import { fetchBtc } from "@/lib/fetchBtc";
+import ValueChart from "@/components/graphs/ValueChart";
+import AreaChartCard from "@/components/cards/AreaChartCard";
 
 
 const UserGrid = async () => {
@@ -26,11 +28,14 @@ const UserGrid = async () => {
     const PNLprcnt = percentage(tokenValue.value, tokenValEntry);
 
     return (
-        <div className="grid gap-7">
+        <div className="grid gap-4 h-full">
             <div className="flex justify-between gap-2">
                 <DataCard name="Current amount" value={currentAmmount} porcent={percentage(currentAmmount, usdInvested)}></DataCard>
                 <DataCard name="PNL" value={PNL} porcent={PNLprcnt}></DataCard>
                 <DataCard name="Token value" value={tokenValue.value} porcent={percentage(tokenValue.value,tokenValEntry)}></DataCard>
+            </div>
+            <div>
+                <AreaChartCard></AreaChartCard>
             </div>
         </div>
     );
