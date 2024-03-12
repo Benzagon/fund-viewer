@@ -1,8 +1,9 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import CryptoPrice from "@/components/cards/CyptoPrice";
 import { LargeDataCard } from "@/components/cards/DataCard";
+import PieChart from "@/components/graphs/PieChart";
 import { fetchBtc } from "@/lib/fetchBtc";
-import { fetchTokenData, fetchTokenValue } from "@/lib/fetchData";
+import { fetchNav, fetchTokenData, fetchTokenValue } from "@/lib/fetchData";
 import { percentage } from "@/lib/utils";
 import { getServerSession } from "next-auth";
 
@@ -14,12 +15,18 @@ const AssetGrid = async () => {
     const fundId = session?.user.fundId;
 
     const tokenData = await fetchTokenData(id || '');
-    const { tokens, usdInvested, tokenValEntry, btcPriceEntry } = tokenData.data;
+    const { usdInvested, tokenValEntry, btcPriceEntry } = tokenData.data;
 
     let tokenValue: { value: number } = {value: 0};
-    const prices = await fetchBtc().then(async (prices) => {
+    // let nav_assets: {name: string, value: number}[] = [];
+
+    const { prices, nav_assets }= await fetchBtc().then(async (prices) => {
         tokenValue = await fetchTokenValue(fundId || '', prices.btcPrice, prices.ethPrice);
-        return prices;
+        const nav_assets = await fetchNav(fundId || '', prices.btcPrice, prices.ethPrice)
+        .then((data) => {
+            return data.data.assets_value
+        });
+        return { prices, nav_assets };
     });
 
     // const currentAmmount = tokens * tokenValue.value;
@@ -36,6 +43,7 @@ const AssetGrid = async () => {
                 <CryptoPrice btcPriceEntry={btcPriceEntry} pnl={PNLprcnt}></CryptoPrice>
                 <LargeDataCard name="Alpha BTC" value={alphaBtc} porcent={alphaBtcPrcnt}></LargeDataCard>
             </div>
+            <PieChart assets={nav_assets}></PieChart>
        </div>
     )
 }

@@ -9,3 +9,9 @@ export const fetchTokenValue = async (fundId: string, btcPrice: string, ethPrice
     if(!res.ok) throw new Error('Failed to fetch current token value');
     return await res.json();
 }
+
+export const fetchNav = async (fundId: string, btcPrice: string, ethPrice: string) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/get-nav/?fundId=${fundId}&btc=${btcPrice}&eth=${ethPrice}`);
+    if(!res.ok) throw new Error('Failed to fetch nav value');
+    return await res.json();
+}
