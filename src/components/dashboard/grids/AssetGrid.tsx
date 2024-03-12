@@ -20,15 +20,14 @@ const AssetGrid = async () => {
     let tokenValue: { value: number } = {value: 0};
     // let nav_assets: {name: string, value: number}[] = [];
 
-    const { prices, nav_assets }= await fetchBtc().then(async (prices) => {
+    const { prices, nav }= await fetchBtc().then(async (prices) => {
         tokenValue = await fetchTokenValue(fundId || '', prices.btcPrice, prices.ethPrice);
-        const nav_assets = await fetchNav(fundId || '', prices.btcPrice, prices.ethPrice)
+        const nav = await fetchNav(fundId || '', prices.btcPrice, prices.ethPrice)
         .then((data) => {
-            return data.data.assets_value
+            return data.data
         });
-        return { prices, nav_assets };
+        return { prices, nav };
     });
-
     // const currentAmmount = tokens * tokenValue.value;
     // const PNL = currentAmmount - usdInvested;
     const PNLprcnt = percentage(tokenValue.value, tokenValEntry);
@@ -43,7 +42,7 @@ const AssetGrid = async () => {
                 <CryptoPrice btcPriceEntry={btcPriceEntry} pnl={PNLprcnt}></CryptoPrice>
                 <LargeDataCard name="Alpha BTC" value={alphaBtc} porcent={alphaBtcPrcnt}></LargeDataCard>
             </div>
-            <PieChart assets={nav_assets}></PieChart>
+            <PieChart assets={nav.assets_value} nav={nav.nav}></PieChart>
        </div>
     )
 }

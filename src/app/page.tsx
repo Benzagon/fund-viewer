@@ -1,22 +1,8 @@
-//SERVER COMPONENT
-import prisma from "@/lib/prisma";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/options";
-import Signout from "@/components/Signout";
-import ValueChart from "@/components/graphs/ValueChart";
-import PieChart from "@/components/graphs/PieChart";
 import Navbar from "@/components/dashboard/Navbar";
 import UserGrid from "@/components/dashboard/grids/UserGrid";
 import AssetGrid from "@/components/dashboard/grids/AssetGrid";
-
-async function getTokens(email: string) { //Change to id
-  const result = await prisma.user.findUnique({
-    where: {
-      email
-    }
-  });
-  return result?.tokens;
-}
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
@@ -33,9 +19,6 @@ export default async function Home() {
           <UserGrid></UserGrid>
           <AssetGrid></AssetGrid>
         </div>
-        {/* <div className="flex flex-col items-center justify-center pt-36">
-          <Signout></Signout>
-        </div> */}
       </div>
     </>
   );
