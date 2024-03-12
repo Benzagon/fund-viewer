@@ -38,7 +38,7 @@ const AssetGrid = async () => {
     const alphaBtc = usdInvested + usdInvested * (Math.abs(btcVar) / 100);
 
     return (
-       <div className="grid gap-7">
+       <div className="grid 3xl:gap-7 gap-5">
             <div className="flex justify-between gap-5">
                 <CryptoPrice btcPriceEntry={btcPriceEntry} pnl={PNLprcnt}></CryptoPrice>
                 <LargeDataCard name="Alpha BTC" value={alphaBtc} porcent={alphaBtcPrcnt}></LargeDataCard>

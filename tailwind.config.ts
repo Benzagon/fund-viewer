@@ -35,6 +35,12 @@ const config = {
       fontFamily: {
         'poppins': ["var(--font-poppins)"]
       },
+      screens: {
+        '3xl': '1700px'
+      },
+      fontSize: {
+        'min': '10px'
+      },
       colors: {
         fund: {
           text: {

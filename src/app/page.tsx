@@ -21,14 +21,13 @@ async function getTokens(email: string) { //Change to id
 export default async function Home() {
   const session = await getServerSession(authOptions);
   const email = session?.user?.email;
-  const tokens = await getTokens(session?.user?.email || '');
   return (
     <>
       <Navbar fundName={'KB Capital'} email={email || 'Undefined'} name={session?.user?.name || 'Undefined'}></Navbar>
-      <div className="w-screen pt-32 grid gap-10 px-20">
+      <div className="w-screen pt-32 grid 3xl:gap-10 gap-8 px-20">
         <div className="flex flex-col gap-0">
-          <h1 className="font-medium text-h1">Dashboard</h1>
-          <h3 className="font-normal text-xl text-fund-text-gray">View the overall fund performance</h3>
+          <h1 className="font-medium 3xl:text-h1 text-2xl">Dashboard</h1>
+          <h3 className="font-normal 3xl:text-xl text-base text-fund-text-gray">View the overall fund performance</h3>
         </div>
         <div className="flex flex-wrap gap-8 justify-between items-start">
           <UserGrid></UserGrid>

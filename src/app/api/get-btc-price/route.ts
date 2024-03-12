@@ -13,7 +13,6 @@ export async function GET(req: NextRequest) {
         const prices = await response.json()
         const btcPrice = prices.data.BTC.quote.USD.price;
         const ethPrice = prices.data.ETH.quote.USD.price;
-        console.log(btcPrice, ' ' , ethPrice);
         return NextResponse.json({btcPrice: btcPrice, ethPrice: ethPrice});  
     } catch (error){
         console.error(error);
