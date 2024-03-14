@@ -6,5 +6,6 @@ type User = {
     usdInvested: number,
     tokenValEntry: number,
     btcPriceEntry: number,
+    role?: string,
     fundId: number
 }

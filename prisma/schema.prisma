@@ -43,6 +43,7 @@ model User {
   tokens          Float
   tokenValEntry   Float
   btcPriceEntry   Float
+  role            String?
   fund            Fund         @relation(fields: [fundId], references: [id])
   fundId          Int
 }
