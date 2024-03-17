@@ -42,7 +42,7 @@ const Admin = async () => {
   return (
     <div className="w-screen flex justify-center items-center">
       <div className="md:w-[50%] container mx-auto py-10">
-        <DataTable columns={columns} data={assets} />
+        <DataTable fundId={fundId} columns={columns} data={assets} />
       </div>
     </div>
   )

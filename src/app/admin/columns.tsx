@@ -26,11 +26,12 @@ export const columns: ColumnDef<Asset>[] = [
         header: () => <div className="text-right">Amount</div>,
         cell: ({ row }) => {
           const amount = parseFloat(row.getValue("value"))
-          const formatted = new Intl.NumberFormat("en-US", {
-            style: "currency",
-            currency: "USD",
-          }).format(amount)
-    
+          const coin: string = row.getValue("coin");
+          // const formatted = new Intl.NumberFormat("en-US", {
+          //   style: "currency",
+          //   currency: "USD",
+          // }).format(amount)
+          const formatted = amount + ' ' + coin;
           return <div className="text-right font-medium">{formatted}</div>
         },
       },
@@ -50,7 +51,7 @@ export const columns: ColumnDef<Asset>[] = [
                 <DropdownMenuContent align="end">
                   <DropdownMenuLabel>Actions</DropdownMenuLabel>
                   <DropdownMenuItem
-                    onClick={() => navigator.clipboard.writeText(asset.id)}
+                    // onClick={() => navigator.clipboard.writeText(asset.id)}
                   >
                     Copy payment ID
                   </DropdownMenuItem>

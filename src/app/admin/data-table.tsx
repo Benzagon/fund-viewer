@@ -16,15 +16,18 @@ import {
     TableHeader,
     TableRow,
   } from "@/components/ui/table"
+import { CreateAsset } from "@/components/admin/assets/CreateAsset";
 
   interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
     data: TData[]
+    fundId: number
   }
 
 export function DataTable<TData, TValue>({
     columns,
     data,
+    fundId
 }: DataTableProps<TData, TValue>) {
     const table = useReactTable({
         data,
@@ -80,6 +83,7 @@ export function DataTable<TData, TValue>({
       </Table>
     </div>
     <div className="flex items-center justify-end space-x-2 py-4">
+        <CreateAsset fundId={fundId}></CreateAsset>
         <Button
           variant="outline"
           size="sm"
