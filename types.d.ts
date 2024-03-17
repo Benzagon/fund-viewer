@@ -9,3 +9,9 @@ type User = {
     role?: string,
     fundId: number
 }
+
+type Asset = {
+    name: string
+    value: Float
+    coin: "BTC" | "ETH" | "USD"
+  }

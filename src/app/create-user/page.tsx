@@ -1,4 +1,4 @@
-import LoginForm from "@/components/login/loginForm"
+import CreateForm from "@/components/create/CreateUser"
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/options";
 import { redirect } from "next/navigation";
@@ -16,7 +16,7 @@ const Page = async () => {
   }
   return (
     <>
-      <LoginForm></LoginForm>
+      <CreateForm></CreateForm>
     </>
   )
 }
