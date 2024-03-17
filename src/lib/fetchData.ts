@@ -17,7 +17,7 @@ export const fetchNav = async (fundId: string, btcPrice: string, ethPrice: strin
 }
 
 export const fetchAssets = async (fundId: string) => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/get-assets/?fundId=${fundId}`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/get-assets/?fundId=${fundId}`, { next: { tags: ['assets'] } });
     if(!res.ok) throw new Error('Failed to fetch assets');
     return await res.json();
 }

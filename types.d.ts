@@ -13,5 +13,5 @@ type User = {
 type Asset = {
     name: string
     value: Float
-    coin: "BTC" | "ETH" | "USD"
+    coin: "BTC" | "ETH" | "USD" | string
   }

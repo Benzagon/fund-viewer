@@ -15,28 +15,6 @@ const Admin = async () => {
   //@ts-ignore
   const fundId = session?.user.fundId;
 
-
-// const assets: Asset[] = [
-//     {
-//       id: "728ed52f",
-//       name: "Bitcoin",
-//       value: 20.5,
-//       coin: 'BTC'
-//     },
-//     {
-//       id: "7282ed52f",
-//       name: "Ethereum",
-//       value: 9.4,
-//       coin: 'ETH'
-//     },
-//     {
-//       id: "728ed52f",
-//       name: "Bitcoin",
-//       value: 20.5,
-//       coin: 'BTC'
-//     },
-//   ]
-
   const assets: Asset[] = await fetchAssets(fundId);
   
   return (

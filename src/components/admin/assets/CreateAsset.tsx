@@ -1,4 +1,5 @@
 'use client';
+import revalidateAssets from "@/app/actions";
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input"
@@ -9,6 +10,7 @@ import {
     PopoverTrigger,
   } from "@/components/ui/popover"
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -19,6 +21,7 @@ const formSchema = z.object({
   })
 
 export function CreateAsset({fundId}: {fundId: number}) {
+    const [popoverState, setPopoverState] = useState(false);
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -32,15 +35,18 @@ export function CreateAsset({fundId}: {fundId: number}) {
         const { name, amount, coin } = values;
         const numberValue = Number(amount);
         const formattedCoin = coin.toUpperCase(); 
+        const asset: Asset = {name, coin: formattedCoin, value: numberValue}
 
         try {
-          fetch('/api/add-user', {
+          fetch('/api/create-asset', {
             method: 'POST', 
             headers: {
             'Content-Type': 'application/json'
             },
-            body: JSON.stringify({name, formattedCoin, numberValue, fundId})
-          });
+            body: JSON.stringify({asset, fundId})
+          }).then(async () => {
+            await revalidateAssets().then(() => setPopoverState(false));
+          })
         } catch (error){
           console.error(error);
         }
@@ -49,11 +55,11 @@ export function CreateAsset({fundId}: {fundId: number}) {
       }
 
 return (
-    <Popover>
-        <PopoverTrigger asChild>
+    <Popover open={popoverState}>
+        <PopoverTrigger asChild onClick={() => setPopoverState(true)}>
             <Button variant="outline">New asset</Button>
         </PopoverTrigger>
-        <PopoverContent className="w-72">
+        <PopoverContent onInteractOutside={() => setPopoverState(false)} className="w-72">
             <div className="grid gap-4">
             <div className="space-y-2">
                 <h4 className="font-medium leading-none">Create a new asset</h4>
