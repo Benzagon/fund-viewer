@@ -9,6 +9,13 @@ import {
     PopoverContent,
     PopoverTrigger,
   } from "@/components/ui/popover"
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select"
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -94,14 +101,18 @@ return (
                     <FormItem>
                         <div className="grid grid-cols-3 items-center">
                             <Label htmlFor="coin">Coin</Label>
-                            <FormControl>
-                            <Input
-                                id="coin"
-                                placeholder="BTC"
-                                className="col-span-2 h-8"
-                                {...field}
-                            />
-                            </FormControl>
+                            <Select onValueChange={field.onChange}>
+                                <FormControl>
+                                    <SelectTrigger className="col-span-2 h-8">
+                                        <SelectValue placeholder="Select a coin" />
+                                    </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                    <SelectItem value="BTC">BTC</SelectItem>
+                                    <SelectItem value="ETH">ETH</SelectItem>
+                                    <SelectItem value="USD">USD</SelectItem>
+                                </SelectContent>
+                            </Select>
                         </div>
                         <FormMessage></FormMessage>
                     </FormItem>
