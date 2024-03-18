@@ -36,9 +36,9 @@ export default function Login() {
      }
 
     return (
-      <div className="w-screen h-screen flex items-center justify-center bg-slate-100">
+      <div className="w-screen h-screen flex items-center justify-center">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 bg-[#FEFEFE] py-8 px-8 w-80 rounded grid drop-shadow-sm">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 bg-white py-8 px-8 w-80 rounded grid drop-shadow-md sm:mb-0 mb-20">
             <h2 className="text-xl font-semibold text-center">Login</h2>
             <FormField
               control={form.control}
