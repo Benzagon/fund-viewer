@@ -29,7 +29,7 @@ const UserGrid = async () => {
 
     return (
         <div className="grid gap-4 h-full">
-            <div className="flex justify-between gap-2">
+            <div className="flex base:flex-row flex-col base:items-start items-center justify-between gap-2">
                 <DataCard name="Current amount" value={currentAmmount} porcent={percentage(currentAmmount, usdInvested)}></DataCard>
                 <DataCard name="PNL" value={PNL} porcent={PNLprcnt}></DataCard>
                 <DataCard name="Token value" value={tokenValue.value} porcent={percentage(tokenValue.value,tokenValEntry)}></DataCard>

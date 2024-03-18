@@ -23,7 +23,7 @@ const DataCard = ({name, value, porcent}: Props) => {
 
 const LargeDataCard = ({name, value, porcent}: Props) => {
     return (
-        <div className="3xl:w-72 w-[13.75rem] h-full py-[1.625rem] px-[22px] bg-white rounded-[10px] flex flex-col justify-between drop-shadow-md">
+        <div className="3xl:w-72 sm:w-[13.75rem] w-[16rem] sm:h-full h-[7rem] sm:py-[1.625rem] py-[1.25rem] px-[22px] bg-white rounded-[10px] flex flex-col justify-between drop-shadow-md">
             <div className="flex gap-3 items-center">
                 <h3 className="font-normal 3xl:text-base text-sm text-fund-text-gray">{name}</h3>
                 <span className="w-8 3xl:text-xl text-base material-symbols-outlined text-[#5D5D5D]/40">info</span>

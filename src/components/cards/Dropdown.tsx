@@ -7,11 +7,11 @@ const Dropdown = ({name, email}: {name: string, email: string}) => {
         <DropdownMenu>
             <DropdownMenuTrigger asChild className="focus:outline-0">
                 <div className="flex gap-4 items-center cursor-pointer">
-                    <div className="flex flex-col items-start gap-1">
-                        <h2 className="3xl:text-xl text-base font-medium">{name}</h2>
+                    <div className="sm:flex flex-col items-start gap-1 hidden">
+                        <h2 className="3xl:text-xl md:text-base text-sm font-medium">{name}</h2>
                         <h3 className="text-sm font-medium text-fund-text-gray">{email}</h3>
                     </div>
-                    <span className="material-symbols-outlined">expand_more</span>
+                    <span className="material-symbols-outlined sm:w-auto w-20 text-end">expand_more</span>
                 </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-40">

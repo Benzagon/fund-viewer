@@ -36,6 +36,7 @@ const config = {
         'poppins': ["var(--font-poppins)"]
       },
       screens: {
+        'base': '810px',
         '3xl': '1700px'
       },
       fontSize: {

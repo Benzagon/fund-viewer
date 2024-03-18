@@ -23,6 +23,7 @@ import { number, z } from "zod";
 
 interface Props {
     fundId: number,
+    asset: Asset
 }
 
 const formSchema = z.object({
@@ -31,14 +32,14 @@ const formSchema = z.object({
     coin: z.string().regex(/^(BTC|ETH|USD)$/i, { message: "BTC, ETH or USD" }),
   })
 
-export function CreateAsset({fundId}: Props) {
+export function UpdateAsset({fundId, asset}: Props) {
     const [popoverState, setPopoverState] = useState(false);
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            name: "",
-            amount: "",
-            coin: "",
+            name: asset.name,
+            amount: String(asset.value),
+            coin: asset.coin,
         },
     })
 
@@ -66,7 +67,7 @@ export function CreateAsset({fundId}: Props) {
 return (
     <Popover open={popoverState}>
         <PopoverTrigger asChild onClick={() => setPopoverState(true)}>
-            <Button variant="outline">New asset</Button>
+            <Button variant="outline">Update asset</Button>
         </PopoverTrigger>
         <PopoverContent onInteractOutside={() => setPopoverState(false)} className="w-72">
             <div className="grid gap-4">

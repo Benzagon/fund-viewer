@@ -1,5 +1,6 @@
 'use client';
-import { AreaChart, LineChart } from '@tremor/react';
+import { LineChart } from '@tremor/react';
+import { useMediaQuery } from 'react-responsive';
 
 const chartdata = [
   {
@@ -176,13 +177,16 @@ const valueFormatter = function (number: number) {
 };
 
 export default function ValueChart() {
+  const isMobile = useMediaQuery({ query: `(max-width: 640px)` });
+
   return (
-    <div className='w-full h-56'>
+    <div className='w-full md:h-56 h-44 sm:text-base text-sm'>
       <LineChart
         className="h-full"
         data={chartdata}
         index="date"
-        yAxisWidth={65}
+        yAxisWidth={!isMobile ? 65 : 34}
+        startEndOnly={!isMobile ? false : true}
         showAnimation={true}
         categories={['BTC % Change', 'KBI % Change']}
         colors={['red', 'indigo']}

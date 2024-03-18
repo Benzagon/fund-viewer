@@ -38,7 +38,7 @@ const AssetGrid = async () => {
 
     return (
        <div className="grid 3xl:gap-7 gap-5">
-            <div className="flex justify-between gap-5">
+            <div className="flex sm:flex-row flex-col sm:items-start items-center justify-between gap-5">
                 <CryptoPrice btcPriceEntry={btcPriceEntry} pnl={PNLprcnt}></CryptoPrice>
                 <LargeDataCard name="Alpha BTC" value={alphaBtc} porcent={alphaBtcPrcnt}></LargeDataCard>
             </div>

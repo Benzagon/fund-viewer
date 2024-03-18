@@ -11,10 +11,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { deleteAsset } from "@/lib/postAdmin";
-import revalidateAssets from "../actions";
 import DeletePopup from "@/components/admin/assets/DeletePopup";
 import { useState } from "react";
+import { UpdateAsset } from "@/components/admin/assets/UpdateAsset";
 
 export const columns: ColumnDef<Asset>[] = [
       {
@@ -56,10 +55,13 @@ export const columns: ColumnDef<Asset>[] = [
                 <DropdownMenuContent align="end">
                   <DropdownMenuLabel>Actions</DropdownMenuLabel>
                   <DropdownMenuSeparator />
+                  {/* <DropdownMenuItem>    
+                    <UpdateAsset fundId={1} asset={asset}></UpdateAsset>
+                  </DropdownMenuItem> */}
                   <DropdownMenuItem
                     onClick={() => usePopup()}
                   >    
-                    Delete asset
+                    Delete
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>

@@ -16,14 +16,6 @@ const Admin = async () => {
   const fundId = session?.user.fundId;
 
   const assets: Asset[] = await fetchAssets(fundId);
-  // const assets: Asset[] = [
-  //   {
-  //     id: 'aaa',
-  //     name: 'test',
-  //     value: 20,
-  //     coin: 'BTC'
-  //   }
-  // ]
   
   return (
     <div className="w-screen flex justify-center items-center">
