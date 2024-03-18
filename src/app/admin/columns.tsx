@@ -17,7 +17,7 @@ import DeletePopup from "@/components/admin/assets/DeletePopup";
 import { useState } from "react";
 
 export const columns: ColumnDef<Asset>[] = [
-    {
+      {
         accessorKey: "name",
         header: "Name",
       },
@@ -38,8 +38,9 @@ export const columns: ColumnDef<Asset>[] = [
       {
         id: "actions",
         cell: ({ row }) => {
+          // eslint-disable-next-line
           const [openPopup, setOpenPopup] = useState(false);
-          const notPopup = () => {
+          const usePopup = () => {
             setOpenPopup((open) => !open);
           }
           const asset = row.original
@@ -56,7 +57,7 @@ export const columns: ColumnDef<Asset>[] = [
                   <DropdownMenuLabel>Actions</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem
-                    onClick={() => notPopup()}
+                    onClick={() => usePopup()}
                   >    
                     Delete asset
                   </DropdownMenuItem>
