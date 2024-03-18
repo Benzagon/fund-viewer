@@ -11,6 +11,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { deleteAsset } from "@/lib/postAdmin";
+import revalidateAssets from "../actions";
+import DeletePopup from "@/components/admin/assets/DeletePopup";
+import { useState } from "react";
 
 export const columns: ColumnDef<Asset>[] = [
     {
@@ -27,10 +31,6 @@ export const columns: ColumnDef<Asset>[] = [
         cell: ({ row }) => {
           const amount = parseFloat(row.getValue("value"))
           const coin: string = row.getValue("coin");
-          // const formatted = new Intl.NumberFormat("en-US", {
-          //   style: "currency",
-          //   currency: "USD",
-          // }).format(amount)
           const formatted = amount + ' ' + coin;
           return <div className="text-right font-medium">{formatted}</div>
         },
@@ -38,6 +38,10 @@ export const columns: ColumnDef<Asset>[] = [
       {
         id: "actions",
         cell: ({ row }) => {
+          const [openPopup, setOpenPopup] = useState(false);
+          const notPopup = () => {
+            setOpenPopup((open) => !open);
+          }
           const asset = row.original
           return (
             <div className="flex justify-end">
@@ -50,16 +54,15 @@ export const columns: ColumnDef<Asset>[] = [
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
                   <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                  <DropdownMenuItem
-                    // onClick={() => navigator.clipboard.writeText(asset.id)}
-                  >
-                    Copy payment ID
-                  </DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem>View customer</DropdownMenuItem>
-                  <DropdownMenuItem>View payment details</DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={() => notPopup()}
+                  >    
+                    Delete asset
+                  </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
+              <DeletePopup open={openPopup} setOpenPopup={setOpenPopup} assetId={asset.id}></DeletePopup>
             </div>
           )
         },

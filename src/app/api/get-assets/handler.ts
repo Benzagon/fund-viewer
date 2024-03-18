@@ -7,6 +7,7 @@ export async function getAssetData(fundId: number) {
                 fundId
             },
             select: {
+                id: true,
                 value: true,
                 name: true,
                 coin: true

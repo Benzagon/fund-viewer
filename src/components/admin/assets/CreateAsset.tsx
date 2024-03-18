@@ -35,7 +35,7 @@ export function CreateAsset({fundId}: {fundId: number}) {
         const { name, amount, coin } = values;
         const numberValue = Number(amount);
         const formattedCoin = coin.toUpperCase(); 
-        const asset: Asset = {name, coin: formattedCoin, value: numberValue}
+        const asset: Asset = {id: '', name, coin: formattedCoin, value: numberValue}
 
         try {
           fetch('/api/create-asset', {
@@ -50,8 +50,6 @@ export function CreateAsset({fundId}: {fundId: number}) {
         } catch (error){
           console.error(error);
         }
-  
-        console.log(values)
       }
 
 return (
