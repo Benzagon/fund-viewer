@@ -6,5 +6,6 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const percentage = (value: number, total: number) => {
-  return ((value - total) / total) * 100;
+  const calculation = ((value - total) / total) * 100;
+  return Number(calculation.toFixed(2));
 }
