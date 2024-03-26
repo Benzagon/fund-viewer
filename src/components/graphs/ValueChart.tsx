@@ -99,74 +99,79 @@ const chartdata = [
     'KBI % Change': -57.28
   },
   {
-    date: 'Dec 2022',
+    date: 'Jan 2023',
     'BTC % Change': -68.03,
     'KBI % Change': -66.60
   },
   {
-    date: 'Jan 2023',
+    date: 'Feb 2023',
     'BTC % Change': -68.90494325,
     'KBI % Change': -68.01690075
   },
   {
-    date: 'Feb 2023',
+    date: 'Mar 2023',
     'BTC % Change': -45.48,
     'KBI % Change': -49
   },
   {
-    date: 'Mar 2023',
-    'BTC % Change': -42.43,
-    'KBI % Change': -43.27
-  },
-  {
     date: 'Apr 2023',
-    'BTC % Change': -49.27,
-    'KBI % Change': -50.70
+    'BTC % Change': -42.43,
+    'KBI % Change': 43.27
   },
   {
     date: 'May 2023',
-    'BTC % Change': -43.45,
-    'KBI % Change': -48.07
+    'BTC % Change': -49.27,
+    'KBI % Change': 50.70
   },
   {
     date: 'Jun 2023',
-    'BTC % Change': -45.27,
-    'KBI % Change': -48.65
+    'BTC % Change': -43.45,
+    'KBI % Change': 48.07
   },
   {
     date: 'Jul 2023',
-    'BTC % Change': -51.58,
-    'KBI % Change': -54.69
+    'BTC % Change': -45.27,
+    'KBI % Change': 48.65
   },
   {
     date: 'Aug 2023',
-    'BTC % Change': -51.78,
-    'KBI % Change': -55.05
+    'BTC % Change': -51.58,
+    'KBI % Change': 54.69
   },
   {
     date: 'Sep 2023',
-    'BTC % Change': -30.15,
-    'KBI % Change': -40.41
+    'BTC % Change': -51.78,
+    'KBI % Change': 55.05
   },
   {
     date: 'Oct 2023',
-    'BTC % Change': -30.89,
-    'KBI % Change': -40.28
+    'BTC % Change': -30.15,
+    'KBI % Change': 40.41
   },
   {
     date: 'Nov 2023',
-    'BTC % Change': -21.67,
-    'KBI % Change': -34.10
+    'BTC % Change': -30.89,
+    'KBI % Change': 40.28
   },
   {
     date: 'Dec 2023',
-    'BTC % Change': -15.31,
-    'KBI % Change': -23.06
+    'BTC % Change': -21.67,
+    'KBI % Change': 34.10
   },
   {
     date: 'Jan 2024',
+    'BTC % Change': -15.31,
+    'KBI % Change': 23.06
+  },
+  {
+    date: 'Feb 2024',
     'BTC % Change': 17.10,
     'KBI % Change': 2.05
+  },
+  {
+    date: 'Mar 2024',
+    'BTC % Change': 32.24,
+    'KBI % Change': 8.86
   }
 ];
 
