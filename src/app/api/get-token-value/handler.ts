@@ -1,6 +1,6 @@
 import prisma from "@/lib/prisma";
 
-const calculateTotalTokens = (tokens: {tokens: number}[]) => {
+export const calculateTotalTokens = (tokens: {tokens: number}[]) => {
     let totalTokens = 0;
     for(let i = 0; i < tokens.length; i++){
         totalTokens += tokens[i].tokens;
