@@ -34,9 +34,9 @@ const UserGrid = async () => {
                 <DataCard name="PNL" value={PNL} porcent={PNLprcnt}></DataCard>
                 <DataCard name="Token value" value={tokenValue.value} porcent={percentage(tokenValue.value,tokenValEntry)}></DataCard>
             </div>
-            <div>
+            {/* <div>
                 <AreaChartCard></AreaChartCard>
-            </div>
+            </div> */}
         </div>
     );
 };

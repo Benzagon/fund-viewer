@@ -15,9 +15,9 @@ export default async function Home() {
           <h1 className="font-medium 3xl:text-h1 sm:text-2xl text-xl">Dashboard</h1>
           <h3 className="font-normal 3xl:text-xl sm:text-base text-sm text-fund-text-gray">View the overall fund performance</h3>
         </div>
-        <div className="flex xl:flex-row flex-col xl:gap-0 gap-8 justify-between xl:items-start base:items-center">
-          <UserGrid></UserGrid>
+        <div className="flex xl:flex-row flex-col-reverse xl:gap-8 gap-8 justify-start xl:items-start base:items-center">
           <AssetGrid></AssetGrid>
+          <UserGrid></UserGrid>
         </div>
       </div>
     </>
