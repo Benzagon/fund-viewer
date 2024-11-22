@@ -5,7 +5,10 @@ const calculateNav = (assets: {value: number, coin: string, name: string}[], eth
     let assets_value: {name: string, value: number}[] = [];
     for(let i = 0; i < assets.length; i++){
         let value = 0
-        assets[i].coin === 'BTC' ? (value = assets[i].value * btcPrice) : (value = assets[i].value * ethPrice) //Multiply value depending on if its eth or btc
+        //Multiply value depending on if its eth or btc
+        if (assets[i].coin === 'BTC') { value = assets[i].value * btcPrice }
+        else if (assets[i].coin === 'ETH') { value = assets[i].value * ethPrice }
+        else { value = assets[i].value }
         nav += value;
         assets_value.push({name: assets[i].name, value});
     }
