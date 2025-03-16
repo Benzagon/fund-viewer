@@ -11,8 +11,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "KB Capital",
-  description: "KB Capital - Fund analytics",
+  title: "BLC Capital",
+  description: "BLC Capital - Fund analytics",
 };
 
 export default function RootLayout({

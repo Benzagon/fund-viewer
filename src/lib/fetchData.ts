@@ -21,3 +21,9 @@ export const fetchAssets = async (fundId: string) => {
     if(!res.ok) throw new Error('Failed to fetch assets');
     return await res.json();
 }
+
+export const fetchFundName = async (fundId: string) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/get-fund-name/?fundId=${fundId}`);
+    if(!res.ok) throw new Error('Failed to fetch fund name');
+    return await res.json();
+}
