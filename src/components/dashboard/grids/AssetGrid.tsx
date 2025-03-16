@@ -31,16 +31,16 @@ const AssetGrid = async () => {
     // const currentAmmount = tokens * tokenValue.value;
     // const PNL = currentAmmount - usdInvested;
     const PNLprcnt = percentage(tokenValue.value, tokenValEntry);
-    const btcVar = percentage(prices.btcPrice, btcPriceEntry);
+    // const btcVar = percentage(prices.btcPrice, btcPriceEntry);
 
-    const alphaBtcPrcnt = Number((PNLprcnt - btcVar).toFixed(2));
-    const alphaBtc = usdInvested + usdInvested * (Math.abs(btcVar) / 100);
+    // const alphaBtcPrcnt = Number((PNLprcnt - btcVar).toFixed(2));
+    // const alphaBtc = usdInvested + usdInvested * (Math.abs(btcVar) / 100);
 
     return (
        <div className="grid 3xl:gap-7 gap-5">
             <div className="flex sm:flex-row flex-col sm:items-start items-center justify-between gap-5">
                 <CryptoPrice btcPriceEntry={btcPriceEntry} pnl={PNLprcnt}></CryptoPrice>
-                <LargeDataCard name="Alpha BTC" porcent={alphaBtcPrcnt}></LargeDataCard>
+                {/* <LargeDataCard name="Alpha BTC" porcent={alphaBtcPrcnt}></LargeDataCard> */}
             </div>
             <PieChart assets={nav.assets_value} nav={nav.nav}></PieChart>
        </div>
