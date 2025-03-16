@@ -6,6 +6,8 @@ import { DataTable } from "./data-table";
 import { fetchAssets, fetchNav, fetchTokenValue } from "@/lib/fetchData";
 import { getTotalTokens } from "@/lib/postAdmin";
 import { fetchBtc } from "@/lib/fetchBtc";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const Admin = async () => {
   const session = await getServerSession(authOptions);
@@ -39,6 +41,9 @@ const Admin = async () => {
       <div className="md:w-[50%] container mx-auto py-10">
         <DataTable fundId={fundId} columns={columns} data={assets} />
       </div>
+      <Button className="p-0 py-0">
+        <Link href={"/create-user"} className="h-full mx-4 flex items-center justify-center">Create new User</Link>
+      </Button>
     </div>
   )
 }
