@@ -6,7 +6,7 @@ export async function POST(req: NextRequest) {
     const {assets, fundId} = data;
     console.log("Assets:", assets);
     console.log("Fund ID:", fundId);
-    const result = await updateAsset(assets, fundId);
-    return NextResponse.json({result});
+    await updateAsset(assets, fundId);
+    return NextResponse.json({"status": "updates"});
     // return NextResponse.json({'hola':'hola'})
 }

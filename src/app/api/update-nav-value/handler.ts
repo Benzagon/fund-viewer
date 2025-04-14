@@ -11,8 +11,8 @@ export async function updateAsset(assets: [string, number][], fundId: number) {
             });
 
             if (!asset) {
-                throw new Error("Asset not found");
-                //console.log("No se encontro el asset: " + assets[i][0])
+                // throw new Error("Asset not found");
+                console.log("No se encontro el asset: " + assets[i][0])
             }
             else{
             
