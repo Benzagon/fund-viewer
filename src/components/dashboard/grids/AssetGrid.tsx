@@ -1,7 +1,5 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import CryptoPrice from "@/components/cards/CyptoPrice";
-import { LargeDataCard } from "@/components/cards/DataCard";
-import PieChart from "@/components/graphs/PieChart";
 import { fetchBtc } from "@/lib/fetchBtc";
 import { fetchNav, fetchTokenData, fetchTokenValue } from "@/lib/fetchData";
 import { percentage } from "@/lib/utils";
