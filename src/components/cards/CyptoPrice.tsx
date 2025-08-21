@@ -38,7 +38,7 @@ const CryptoCard: FC<CryptoCardProps> = ({ image, short, coin, currentPrice, ent
 export default async function CryptoPrice({btcPriceEntry, pnl}: {btcPriceEntry: number, pnl: number}) {
     const prices = await fetchBtc();
     return (
-        <div className="bg-white h-fit 3xl:p-[30px] p-6 rounded-[10px] flex flex-col gap-5 w-full drop-shadow-md">
+        <div className="bg-white h-fit min-w-72 3xl:p-[30px] p-6 rounded-[10px] flex flex-col gap-5 w-full drop-shadow-md">
             <CryptoCard image={btcImg} short={'BTC'} coin={'Bitcoin'} currentPrice={prices.btcPrice} entryPrice={btcPriceEntry}/>
             <CryptoCard image={ethImg} short={'ETH'} coin={'Ethereum'} currentPrice={prices.ethPrice}/>
         </div>

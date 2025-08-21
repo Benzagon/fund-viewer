@@ -42,7 +42,7 @@ const AssetGrid = async () => {
                 <CryptoPrice btcPriceEntry={btcPriceEntry} pnl={PNLprcnt}></CryptoPrice>
                 {/* <LargeDataCard name="Alpha BTC" porcent={alphaBtcPrcnt}></LargeDataCard> */}
             </div>
-            <PieChart assets={nav.assets_value} nav={nav.nav}></PieChart>
+            {/* <PieChart assets={nav.assets_value} nav={nav.nav}></PieChart> */}
        </div>
     )
 }
